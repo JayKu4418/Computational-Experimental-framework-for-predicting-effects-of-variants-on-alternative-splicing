@@ -1,0 +1,48 @@
+MutID	Pos1	Pos2	MutBase1	MutBase2	Label	Enhancer	Silencer	SS
+Mut1	-79	0	G		NonSynonymous	5.540666667	-1.562	0
+Mut2	-79	0	A		NonSynonymous	7.917666667	-1.642	0
+Mut3	-65	0	C		NonSynonymous	-0.34925	-1.696	0
+Mut4	-64	0	C		Synonymous	0.953	-3.139	0
+Mut5	-63	0	C		NonSynonymous	0.18075	-1.5635	0
+Mut6	-63	0	G		NonSynonymous	-0.4118	2.416333333	0
+Mut7	-40	0	A		Synonymous	3.7335	0.8705	0
+Mut8	-30	0	C		NonSynonymous	-1.502833333	-3.231333333	0
+Mut9	-28	0	C		Synonymous	0.461625	-0.535	0
+Mut10	-24	0	G		NonSynonymous	-1.54875	0	0
+Mut11	-14	0	U		NonSynonymous	-0.129	2.558666667	0
+Mut12	-18	0	A		NonSynonymous	1.24325	-1.181	0
+Mut13	-13	0	C		Synonymous	0.336333333	-2.941666667	0
+Mut14	-13	0	A		Synonymous	2.01575	-1.819333333	0
+Mut15	-4	0	G		Synonymous	0	2.638	0
+Mut16	-2	0	A		NonSynonymous	0	0	0.84
+Mut17	-2	0	U		NonSynonymous	0	0	0.39
+Mut18	-1	0	C		Synonymous	0	0	1.24
+Mut19	3	0	A		Intronic	0	0	1.5
+Mut20	4	0	C		Intronic	0	0	-3.82
+Mut21	8	0	U		Intronic	2.6955	1.1905	0
+Mut22	9	0	U		Intronic	2.978	-2.729	0
+Mut23	11	0	C		Intronic	0	0.58075	0
+Mut24	12	0	U		Intronic	0.857	-1.4242	0
+Mut25	13	0	G		Intronic	0	-4.9435	0
+Mut26	14	0	U		Intronic	0	-1.535333333	0
+Mut27	15	0	C		Intronic	0	-1.3125	0
+Mut28	16	0	U		Intronic	0	0.217	0
+Mut29	17	0	U		Intronic	0	-4.139	0
+Mut30	18	0	C		Intronic	0	-1.2145	0
+Mut31	19	0	G		Intronic	0	0.792	0
+Mut32	29	0	A		Intronic	-2.582	2.528	0
+Mut33	33	0	G		Intronic	1.7776	0	0
+Mut34	-40	19	A	G	Double	3.7335	1.6625	0
+Mut35	-4	17	G	A	Double	0	4.806	0
+Mut36	-2	16	A	U	Double	0	0.716	0.84
+Mut37	-2	19	A	G	Double	0	1.291	0.84
+Mut38	3	12	A	U	Double	4.756	-1.161	1.5
+Mut39	3	19	A	G	Double	3.899	0.579666667	1.5
+Mut40	12	19	U	G	Double	0.857	-1.30325	0
+Mut41	13	19	G	G	Double	0	-3.296666667	0
+Mut42	14	19	U	G	Double	0	-0.359333333	0
+Mut43	15	19	C	G	Double	0	-1.160333333	0
+Mut44	17	18	U	C	Double	0	-0.115666667	0
+Mut45	17	18	U	A	Double	0	-0.12625	0
+Mut46	17	19	NA	G	Double	0	0.44175	0
+Mut47	17	19	A	G	Double	0	1.5412	0
