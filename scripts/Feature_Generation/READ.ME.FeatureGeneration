@@ -1,0 +1,70 @@
+README
+
+Order to run code
+
+What you need (Found in DataToStart	:
+MAPT_SingleMutations_TrainingSet.tsv
+A list of mutations in Exon10 and Intron10 for MAPT in a file, with no header. 
+First column is the mutation ID.
+Second column is the position relative to the exon-intron boundary. If the mutation is in the exon, then the position will be a negative number else if the mutation is in the intron then the position will be a positive number. 
+Third column is the wild type nucleotide. 
+Fourth column is the mutation nucleotide. 
+If mutation is a deletion, then third column will contain deleted nucleotides and fourth column will contain the value NA. If the mutation is an insertion, then third column will contain the value NA and the fourth column will contain the inserted nucleotides. 
+
+Fasta file 
+MAPT_exon10intron10withDMSdata.fa
+It contains all of Exon10 sequence (93 bases) and Intron10 sequence for which we have data (141 bases)
+
+DMS data file
+Invivo_Exon10Intron10_PooledRep_RenormalizedPerNucleotide_ScaledGUs_GsAndUsSetToLargeNegativeValue_RewrittenCoordinatesIncludeAllExon10.shape
+
+
+It contains two columns: first column is position and second column is the DMS value
+
+In the file above, we have renormalized the values for each nucleotide type as described in the ShapeMapper paper, set Gs and Us to large negative values, we have also added additional positions for exon 10 for which we did not have data and set those to large negative values.
+
+
+Generating PWMs for SREs
+
+We generated PWMs for the SRE motifs found in Fairbrother et al., 2002, Wang et al., 2004, Wang et al.,2012, Wang et al., 2013. 
+These can be converted to log likelihood ratios for each motif. 
+For a given sequence, we can now calculate the strength of the sequence for that motif. 
+There are 8 ESE motif clusters, 7 ESS motif clusters, 7 ISE motif clusters and 8 ISS motif clusters. 
+
+There are 4 files ESE_Overrepresented.tsv, ESS_Overrepresented.tsv, ISE_Overrepresented.tsv, ISS_Overrepresented.tsv that we start from.
+
+-> Calculate dissimilarity scores between all the motifs for an SRE class
+	- script calculateDissimilarityScoresBetweenAllMotifs.py [in Scripts_To_Obtain_PWMs]
+-> Cluster the motifs using the dissimilarity scores 
+	- script getClustersFromDissimilarityScoresOfMotif_AlignSeqInClusters.py (the script getClustersFromDendogram.py is called by this) [in Scripts_To_Obtain_PWMs]
+-> Calculate the PWM for each cluster for each category of SRE
+	- script calculatePMW_SREmotifs.py [in Scripts_To_Obtain_PWMs]
+-> Calculate motif scores for all possible kmers for each category of SRE 
+	- script calculateSREscores_allPossibleKmers.py [in Scripts_To_Obtain_PWMs]
+
+
+
+Features to generate:
+
+1) Unfolding energy of structures
+	-> Generate structural ensemble for each sequence (WT and mutations) incorporating the DMS data
+		- script: generateStructuralEnsemble_NoMaxPairingDist_RNAStructure.py
+	-> Unfold the splice site and bigger regions around it based on spliceosomal footprint (going to CT file and unpair any regions around splice site) and 
+	find the difference in delta G between original structure and structure with region of interest unfolded 
+		- script calculateDeltaGforUnfoldingCoordinatePair.py
+	-> Median energy of ensemble structures 
+		- script calulateMedianDeltaGForEnsemblePerMutation.py
+
+2) Strength of splicing regulatory elements motifs
+	-> generate the strength of the splice site using MaxEntScan
+		- script calculate5pSpliceSiteStrength.py
+	-> get the position and strength of motifs for every cluster for each category of SRE for every mutation
+		- script getLocationAndStrengthOfSREbasedOnPWM.py
+	-> calculate the sum of differences between WT and MUT for each cluster 
+		- script calculateSREstrengthDifferenceBetweenWTandMUT_perCluster.py
+
+2) Strength of RNA binding protein motifs
+	-> get the position and strength of motifs for every cluster for each RBP motif for every mutation
+		- script getLocationAndStrengthOfRBPbasedOnPWM_MAPT_RBPs.py
+	-> calculate the sum of differences between WT and MUT for each RBP motif 
+		- script calculateRBPstrengthDifferenceBetweenWTandMUT_perMAPTRBPmotif.py
